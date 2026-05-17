@@ -1,0 +1,48 @@
+For the US Tech Force GCA (General Coding Assessment), "Easy" questions are 
+designed to be completed in under 5 minutes. They test your fluency with 
+Java's String and StringBuilder classes without requiring complex algorithms.
+Here are 10 questions modeled after the 2026 CodeSignal Q1/Q2 patterns:1. 
+
+			Strings 10 easy Questions:
+
+Java Pro-Tips:
+For the Assessment:Always use StringBuilder: If you are modifying strings 
+inside a loop, using str += "new" creates a new object every time (O(n^2)). 
+StringBuilder.append() is O(n) and is the "correct" Java way. 
+Avoid charValue() logic: Use str.toCharArray() if you need to iterate frequently; 
+it's often cleaner than calling str.charAt(i) repeatedly.
+The equals() Trap: 
+Always compare strings with s1.equals(s2), never ==. This is a common "gotcha" in government coding assessments.
+
+1. Parity Transformation: 
+Given an array of strings, if a string's length is even, reverse it. If it is 
+odd, convert it to uppercase.  
+Use: String.toUpperCase(), StringBuilder.reverse(), and basic loops.Example: ["Java", "Code"] -> ["avaJ", "edoC"].
+
+2. Digital Sanitizer: 
+Given a string containing alphanumeric characters, return a new string containing only the digits, in their original order.Focus: Character.isDigit(char) and StringBuilder.append().Example: "US-Gov-2026" to "2026".
+
+3. Vowel-Consonant Pattern Matching: 
+You are given a pattern string (e.g., "010") where 0 represents a vowel and 1 represents a consonant. Return true if a given word matches the pattern. Focus: Conditional logic within a loop and String.indexOf() for vowels "aeiou". Example: Pattern "010", Word "cat" to false.
+
+4. Sentence Case Normalizer: 
+Given a sentence in all lowercase, capitalize only the first letter of every word.Focus: String.split(" ") and String.substring().Example: "us tech force" -> "Us Tech Force".
+
+5. String Compression (Basic)The Task: 
+Given a string, replace every sequence of the same character with the character followed by the count (only if the count is $> 1$).Focus: Single-pass loop logic and boundary checking (i + 1 < length).Example: "aaabbc" -> "a3b2c".
+
+6. Circular Shift CheckThe Task: 
+Given two strings s1 and s2, return true if s2 is a rotation of s1.Focus: The "Double String" trick: check if s2 is a substring of (s1 + s1).Example: s1="abcde", s2="cdeab" -> true.
+
+7. First Unique Character: 
+Find the first character in a string that does not repeat and return its index. If all repeat, return -1.Focus: Using a frequency array int[26] or a HashMap<Character, Integer>. Example: "codesignal" -> 0 (for 'c').
+
+8. Domain Extractor: 
+Given a list of government emails, return a list of unique agency names (the part between @ and .gov). Focus: String.indexOf("@") and String.substring(). Example: ["j.doe@nasa.gov", "a.smith@irs.gov"] -> ["nasa", "irs"].
+
+9. Palindrome with "Noise": 
+Determine if a string is a palindrome, ignoring all non-alphanumeric characters and case sensitivity.Focus: Two-pointer technique (left and right indices).Example: "A man, a plan, a canal: Panama" -> true.
+
+10. Abbreviation Generator: 
+Given a multi-word agency name, return its acronym in uppercase. Skip words like "and", "of", or "the".Focus: String.split(), List.contains(), and String.charAt(0).Example: "Department of Veterans Affairs" -> "DVA".
+

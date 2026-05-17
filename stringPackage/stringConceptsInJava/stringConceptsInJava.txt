@@ -1,0 +1,25 @@
+String Literal:
+	String lang = "Java";
+	
+	NOTE: 
+	JVM maintains String Pool to handle string literals.
+	Strings are immutable in Java. This means if lang variable is assigned another
+	value, the compiler creates another string literal in the memory and thus
+	lang references to that new string object, while the original value remains
+	in tact in the memory. This means using string literal to repeatedly
+	update value is costly memory wise. So, use StringBuilder(not synchronized).
+	For handling concurrency relate tasks - use StringBuffer.
+	
+	NOTE:
+	Java does not store strings built using new keywords in string pool.
+	
+
+String Object:
+	String langTwo = new String("JavaScript");
+
+StringBuilder in Java
+	StringBuilder sb = new StringBuilder();
+	sb.append(some string value)
+	You can chain the append method -> sb.append(..).append(...)
+	sb.toString() to convert to string
+	sb.reverse() to reverse the string
