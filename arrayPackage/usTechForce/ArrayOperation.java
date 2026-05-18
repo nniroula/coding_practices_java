@@ -74,11 +74,30 @@ class ArrayActivity{
 	}
 	
 	/*
-	4. Check If Arithmetic ProgressionTask: Given an array, return true if the 
-	difference between consecutive elements is the same throughout the entire 
-	array, otherwise return false.Example: [2, 4, 6, 8] -> true; 
+	4. Check If Arithmetic Progression: 
+	Given an array, return true if the difference between consecutive 
+	elements is the same throughout the entire array, otherwise return false.
+	Example: [2, 4, 6, 8] -> true; 
 	[2, 4, 7, 9] -> false
 	*/
+	public boolean checkIfSameDifference(int[] arr) {
+		boolean result = false;
+		if(arr.length == 0 || arr.length == 1 || arr.length == 2) {
+			return true;
+		}else{
+			int difference = arr[1] - arr[0];
+			
+			for(int i = 1; i < arr.length - 1; i++) { // it length - 1
+				if(arr[i + 1] - arr[i] != difference) {
+					result = false;
+					break;
+				}else {
+					result = true;
+				}
+			}
+		}
+		return result;
+	}
 	
 	/*
 	5. Sum of BoundariesTask: 
@@ -191,7 +210,13 @@ public class ArrayOperation {
 		//3. [3, 5, 2, 7, 4, 9] ans -> [3, 5, 9, 7, 4, 2]
 		int[] arr3 = {3, 5, 2, 7, 4, 9};
 		int[] result2 = aAObject.paritySwap(arr3);
-		System.out.println(Arrays.toString(result2));
+		//System.out.println(Arrays.toString(result2));
+		
+		//4.
+		//int[] arr4 = {2, 4, 6, 8}; // true
+		int[] arr4 = {2, 4, 7, 9}; // false
+		boolean result3 = aAObject.checkIfSameDifference(arr4);
+		System.out.println(result3);
 		
 	}
 }
