@@ -39,11 +39,39 @@ class ArrayActivity{
 	}
 	
 	/*
-	3. Array Parity SwapTask: 
+	3. Array Parity Swap: 
 	Given an array of integers, swap the first even element you find with the 
 	last odd element you find. If either doesn't exist, return the array unchanged.
 	Example: [3, 5, 2, 7, 4, 9] -> [3, 5, 9, 7, 4, 2]
 	*/
+	//use two pointers - first tracks 1st even elem and 2nd tracks last odd
+	public int[] paritySwap(int[] arr) {
+		int leftPointer = 0;
+		int rightPointer = arr.length - 1;
+		int firstEvenElem = 0;
+		int lastOddElem = 0;
+	
+		for(int i = 0; i < arr.length; i++) {
+			if(arr[i] % 2 == 0) {
+				firstEvenElem = arr[i];
+				leftPointer = i;
+				break;
+			}
+		}
+		
+		for(int j = arr.length - 1; j>= 0; j--) {
+			if(arr[j] % 2 != 0) {
+				lastOddElem = arr[j];
+				rightPointer = j;
+				break;
+			}
+		}
+		
+		arr[leftPointer] = lastOddElem;
+		arr[rightPointer] = firstEvenElem;
+		
+		return arr;
+	}
 	
 	/*
 	4. Check If Arithmetic ProgressionTask: Given an array, return true if the 
@@ -159,6 +187,11 @@ public class ArrayOperation {
 		int[] arr2 = {1, 3, 2, 5, 4};  // ans -> 2 (since 3 and 5 fit the criteria).
 		int count = aAObject.countElemsGreaterThanNeighbors(arr2);
 		//System.out.println(count);
+		
+		//3. [3, 5, 2, 7, 4, 9] ans -> [3, 5, 9, 7, 4, 2]
+		int[] arr3 = {3, 5, 2, 7, 4, 9};
+		int[] result2 = aAObject.paritySwap(arr3);
+		System.out.println(Arrays.toString(result2));
 		
 	}
 }
