@@ -1,0 +1,164 @@
+package arrayPackage.usTechForce;
+
+import java.util.Arrays;
+
+class ArrayActivity{
+	
+	/* 1. Alternating Array SignsTask:
+	Given an array of integers arr, modify it such that every element at an even 
+ 	index is positive and every element at an odd index is negative. 
+ 	If an element is 0, leave it as 0.
+ 	Example: [1, 2, 3, 4] -> [1, -2, 3, -4]
+	 */
+	public int[] modifyIntArr(int[] arr) {
+		for(int i = 0; i < arr.length; i++) {
+			if(i % 2 == 0 && arr[i] < 0) {
+				arr[i] = -1 * arr[i];
+			}else if(i % 2 == 1 && arr[i] > 0) {
+				arr[i] = -1 * arr[i];
+			}
+		}
+		return arr;
+	}
+	
+	/*
+	2. Count Elements Greater Than Neighbor: 
+	Given an array nums, count how many elements are strictly greater than both 
+	their left and right neighbors. (Ignore the first and last elements).
+	Example: [1, 3, 2, 5, 4] -> 2 (since 3 and 5 fit the criteria).
+	*/
+	public int countElemsGreaterThanNeighbors(int[] arr) {
+		int count = 0;
+		for(int i = 1; i < arr.length - 1; i++) { //exclude 1st and last elems
+			int element = arr[i];
+			if(element > arr[i - 1] && element > arr[i + 1]) {
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	/*
+	3. Array Parity SwapTask: 
+	Given an array of integers, swap the first even element you find with the 
+	last odd element you find. If either doesn't exist, return the array unchanged.
+	Example: [3, 5, 2, 7, 4, 9] -> [3, 5, 9, 7, 4, 2]
+	*/
+	
+	/*
+	4. Check If Arithmetic ProgressionTask: Given an array, return true if the 
+	difference between consecutive elements is the same throughout the entire 
+	array, otherwise return false.Example: [2, 4, 6, 8] -> true; 
+	[2, 4, 7, 9] -> false
+	*/
+	
+	/*
+	5. Sum of BoundariesTask: 
+	Given an array arr, return the sum of the first element, the middle element 
+	(if the length is odd, use the absolute middle; if even, use the left-middle),
+	 and the last element.Example: [1, 2, 3, 4, 5, 6] -> length is 6 (even), 
+	 left-middle is 3. Sum = 1 + 3 + 6 = 10.
+		*/
+	
+	/*
+	6. Replace with Suffix SumTask: 
+	Modify an array nums such that each element at index i is replaced by the sum 
+	of all elements from index i to the end of the array.
+	Example: [1, 2, 3] -> [6, 5, 3]
+	CodeSignal Q2 Style (Easy Implementation & Basic Simulation)
+		*/
+	
+	/*
+	7. Array Mutation (Classic CodeSignal Q2)Task: 
+	Given an integer n and an array a of length n, create a new array b of length n
+	where b[i] = a[i - 1] + a[i] + a[i + 1]. If an index is out of bounds, 
+	treat its value as 0.
+	Example: a = [4, 0, 1, -2, 3] -> b = [4, 5, -1, 2, 1]
+		*/
+	
+	/*
+	8. Construct String from Alternating ArraysTask: 
+	You are given two arrays of integers, a and b, of the same length. Create a 
+	string by taking elements alternatingly from a and b 
+	(i.e., a[0], b[0], a[1], b[1]...), but only append the number if it is 
+	positive.Example: a = [1, -3, 5], b = [2, 4, -6] -> Result string: "1245"
+		*/
+	
+	/*
+	9. Matrix/Array RibbonsTask: 
+	You are given an array of integers arr representing pieces of wood. You need 
+	to cut them into smaller pieces of equal integer length k. Write a function 
+	that determines the maximum number of pieces of length k you can get.
+	Example: arr = [4, 7, 5], k = 3 -> Cut 4 into one '3', 7 into two '3's, 5 
+	into one '3'. Total pieces = 4.
+		*/
+	
+	/*
+	10. Prefix-Suffix MatchTask: 
+	Given two arrays a and b, find the longest trailing segment (suffix) of a that 
+	exactly matches the leading segment (prefix) of b. Return the length of this 
+	segment.Example: a = [1, 2, 3, 4], b = [3, 4, 5, 6] -> Output: 2 (the matching 
+	subarray is [3, 4]).
+		*/
+	
+	/*
+	11. Maximum ZigZag SubarrayTask: 
+	A zigzag sequence is one where the elements alternate between strictly 
+	increasing and strictly decreasing. Find the length of the longest 
+	contiguous subarray that forms a zigzag pattern.
+	Example: [1, 3, 2, 4, 3, 3] -> 5 (The segment [1, 3, 2, 4, 3] zigzags up, down, up, down).
+		*/
+	
+	/*
+	12. Merge and Filter Congruent ElementsTask: 
+	Given two arrays a and b of equal length, create a new array c where c[i] is 
+	the absolute difference between a[i] and b[i]. Finally, return only the 
+	elements in c that are divisible by a given integer k.
+	Example: a = [10, 20, 30], b = [12, 15, 33], k = 3 -> c = [2, 5, 3]. 
+	Filtered by divisible by 3 -> [3].
+		*/
+	
+	/*
+	13. Cyclic Shift CheckerTask: 
+	Given two arrays a and b of the same length, determine if b can be obtained 
+	by cyclically shifting a to the right by some number of positions.
+	Example: a = [1, 2, 3, 4], b = [3, 4, 1, 2] -> true (shifted by 2).
+		*/
+	
+	/*
+	14. Array Window AveragesTask: 
+	Given an array nums and an integer k, create a new array containing the floor
+	average of every contiguous window of size k.
+	Example: nums = [1, 3, 5, 7], k = 2 -> Windows are [1,3] (avg 2) and 
+	[3,5] (avg 4) and [5,7] (avg 6) -> [2, 4, 6].
+		*/
+	
+	/*
+	15. Peak and Trough CounterTask: 
+	An element is a peak if it is strictly greater than its neighbors, and a 
+	trough if it is strictly smaller. Given an array, return an array of 2 
+	elements: [peak_count, trough_count].
+	Example: [1, 5, 2, 6, 3] -> Peaks are 5 and 6 (2). Trough is 2 (1). 
+	Output: [2, 1].
+		 */
+}
+
+
+//Main class
+public class ArrayOperation {
+	public static void main(String[] args) {
+		//instantiate the class
+		ArrayActivity aAObject = new ArrayActivity();
+		
+		//1
+		int[] arr1 = {1, 2, 3, 4};  // ans: [1, -2, 3, -4]
+		int result1[] = aAObject.modifyIntArr(arr1);
+		//System.out.println(Arrays.toString(result1));
+		
+		//2
+		int[] arr2 = {1, 3, 2, 5, 4};  // ans -> 2 (since 3 and 5 fit the criteria).
+		int count = aAObject.countElemsGreaterThanNeighbors(arr2);
+		//System.out.println(count);
+		
+	}
+}
