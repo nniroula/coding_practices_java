@@ -122,12 +122,29 @@ class ArrayActivity{
 	
 	
 	/*
-	6. Replace with Suffix SumTask: 
-	Modify an array nums such that each element at index i is replaced by the sum 
-	of all elements from index i to the end of the array.
+	6. Replace with Suffix Sum: 
+	Modify an array nums such that each element at index i is replaced by 
+	the sum of all elements from index i to the end of the array.
 	Example: [1, 2, 3] -> [6, 5, 3]
 	CodeSignal Q2 Style (Easy Implementation & Basic Simulation)
-		*/
+	*/
+	public int[] replaceWithSuffixSum(int[] arr) {
+		//declare variable to hold suffixSum
+		int suffixSum = 0;
+		//for i through the end, calculate the sum, assign to suffixSum and
+		// update the arr elem with suffixSum
+		int i = 0;
+		//for(int i = 0; i < arr.length; i++) {
+		while (i < arr.length) {
+			int sum = 0;
+			for(int j = i; j < arr.length; j++) { // j = i, j starts at i
+				sum += arr[j];
+			}
+			arr[i] = sum;
+			i++;
+		}
+		return arr;
+	}
 	
 	/*
 	7. Array Mutation (Classic CodeSignal Q2)Task: 
@@ -235,6 +252,12 @@ public class ArrayOperation {
 		//5. [1, 2, 3, 4, 5, 6] -> ans 10
 		int[] arr5 = {1, 2, 3, 4, 5, 6};
 		int sum = aAObject.getSumOfFirstMiddleLastElem(arr5);
-		System.out.println(sum);
+		//System.out.println(sum);
+		
+		//6. [1, 2, 3] -> ans: [6, 5, 3]
+		int[] arr6 = {1, 2, 3};
+		int[] result4 = aAObject.replaceWithSuffixSum(arr6);
+		System.out.println(Arrays.toString(result4));
+		
 	}
 }
