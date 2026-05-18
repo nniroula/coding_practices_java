@@ -100,12 +100,26 @@ class ArrayActivity{
 	}
 	
 	/*
-	5. Sum of BoundariesTask: 
-	Given an array arr, return the sum of the first element, the middle element 
+	5. Sum of Boundaries: 
+	Given an array arr, return the sum of the first element,the middle element 
 	(if the length is odd, use the absolute middle; if even, use the left-middle),
-	 and the last element.Example: [1, 2, 3, 4, 5, 6] -> length is 6 (even), 
+	 and the last element.
+	 Example: [1, 2, 3, 4, 5, 6] -> length is 6 (even), 
 	 left-middle is 3. Sum = 1 + 3 + 6 = 10.
-		*/
+	*/
+	public int getSumOfFirstMiddleLastElem(int[] arr) {
+		int sum = 0;
+		int arrLength = arr.length;
+		int middleIndex = 0;
+		if(arr.length % 2 == 0) {
+			middleIndex = arrLength/2 - 1;
+		}else {
+			middleIndex = arrLength/2;
+		}
+		sum = arr[0] + arr[arr.length - 1] + arr[middleIndex];
+		return sum;
+	}
+	
 	
 	/*
 	6. Replace with Suffix SumTask: 
@@ -216,7 +230,11 @@ public class ArrayOperation {
 		//int[] arr4 = {2, 4, 6, 8}; // true
 		int[] arr4 = {2, 4, 7, 9}; // false
 		boolean result3 = aAObject.checkIfSameDifference(arr4);
-		System.out.println(result3);
+		//System.out.println(result3);
 		
+		//5. [1, 2, 3, 4, 5, 6] -> ans 10
+		int[] arr5 = {1, 2, 3, 4, 5, 6};
+		int sum = aAObject.getSumOfFirstMiddleLastElem(arr5);
+		System.out.println(sum);
 	}
 }
