@@ -147,40 +147,72 @@ class ArrayActivity{
 	}
 	
 	/*
-	7. Array Mutation (Classic CodeSignal Q2)Task: 
-	Given an integer n and an array a of length n, create a new array b of length n
-	where b[i] = a[i - 1] + a[i] + a[i + 1]. If an index is out of bounds, 
-	treat its value as 0.
+	7. Array Mutation (Classic CodeSignal Q2): 
+	Given an integer n and an array a of length n, create a new array b of 
+	length n where b[i] = a[i - 1] + a[i] + a[i + 1]. If an index is out of 
+	bounds, treat its value as 0.
 	Example: a = [4, 0, 1, -2, 3] -> b = [4, 5, -1, 2, 1]
-		*/
+	*/
+	public int[] mutateArray(int n, int[] a) {
+		int[] b = new int[n];
+		// for first and last element assign
+		b[0] = 0 + a[0] + a[0 + 1]; // b[i] = a[i - 1] + a[i] + a[i + 1]
+		b[b.length - 1] = a[a.length - 2] + a[a.length - 1] + 0; 
+		
+		for(int i = 1; i < b.length - 1; i++) {
+			b[i] = a[i - 1] + a[i] + a[i + 1];
+		}
+		return b;
+	}
 	
 	/*
-	8. Construct String from Alternating ArraysTask: 
+	8. Construct String from Alternating Arrays: 
 	You are given two arrays of integers, a and b, of the same length. Create a 
 	string by taking elements alternatingly from a and b 
 	(i.e., a[0], b[0], a[1], b[1]...), but only append the number if it is 
-	positive.Example: a = [1, -3, 5], b = [2, 4, -6] -> Result string: "1245"
-		*/
+	positive.
+	Example: a = [1, -3, 5], b = [2, 4, -6] -> Result string: "1245"
+	*/
+	public String buildString(int[] a, int[] b) {
+		//take StringBuilder and append values to it. Then convert
+		//StringBuilder object to the string(use toString())
+		StringBuilder sb = new StringBuilder();
+		int i = 0;
+		while(i < a.length) {
+			if(a[i] > 0) {
+				sb.append(a[i]);
+			}
+			if(b[i] > 0) {
+				sb.append(b[i]);
+			}
+			i++;
+		}
+		
+		return sb.toString();
+	}
+	
 	
 	/*
-	9. Matrix/Array RibbonsTask: 
+	9. Matrix/Array Ribbons: 
 	You are given an array of integers arr representing pieces of wood. You need 
 	to cut them into smaller pieces of equal integer length k. Write a function 
 	that determines the maximum number of pieces of length k you can get.
 	Example: arr = [4, 7, 5], k = 3 -> Cut 4 into one '3', 7 into two '3's, 5 
 	into one '3'. Total pieces = 4.
-		*/
+	*/
 	
 	/*
-	10. Prefix-Suffix MatchTask: 
+	10. Prefix-Suffix Match: 
 	Given two arrays a and b, find the longest trailing segment (suffix) of a that 
 	exactly matches the leading segment (prefix) of b. Return the length of this 
-	segment.Example: a = [1, 2, 3, 4], b = [3, 4, 5, 6] -> Output: 2 (the matching 
+	segment.
+	Example: a = [1, 2, 3, 4], b = [3, 4, 5, 6] -> Output: 2 (the matching 
 	subarray is [3, 4]).
-		*/
+	*/
+	
 	
 	/*
-	11. Maximum ZigZag SubarrayTask: 
+	11. Maximum ZigZag Subarray: 
 	A zigzag sequence is one where the elements alternate between strictly 
 	increasing and strictly decreasing. Find the length of the longest 
 	contiguous subarray that forms a zigzag pattern.
@@ -188,7 +220,7 @@ class ArrayActivity{
 		*/
 	
 	/*
-	12. Merge and Filter Congruent ElementsTask: 
+	12. Merge and Filter Congruent Elements: 
 	Given two arrays a and b of equal length, create a new array c where c[i] is 
 	the absolute difference between a[i] and b[i]. Finally, return only the 
 	elements in c that are divisible by a given integer k.
@@ -197,14 +229,14 @@ class ArrayActivity{
 		*/
 	
 	/*
-	13. Cyclic Shift CheckerTask: 
+	13. Cyclic Shift Checker: 
 	Given two arrays a and b of the same length, determine if b can be obtained 
 	by cyclically shifting a to the right by some number of positions.
 	Example: a = [1, 2, 3, 4], b = [3, 4, 1, 2] -> true (shifted by 2).
-		*/
+	*/
 	
 	/*
-	14. Array Window AveragesTask: 
+	14. Array Window Averages: 
 	Given an array nums and an integer k, create a new array containing the floor
 	average of every contiguous window of size k.
 	Example: nums = [1, 3, 5, 7], k = 2 -> Windows are [1,3] (avg 2) and 
@@ -212,7 +244,7 @@ class ArrayActivity{
 		*/
 	
 	/*
-	15. Peak and Trough CounterTask: 
+	15. Peak and Trough Counter: 
 	An element is a peak if it is strictly greater than its neighbors, and a 
 	trough if it is strictly smaller. Given an array, return an array of 2 
 	elements: [peak_count, trough_count].
@@ -257,7 +289,19 @@ public class ArrayOperation {
 		//6. [1, 2, 3] -> ans: [6, 5, 3]
 		int[] arr6 = {1, 2, 3};
 		int[] result4 = aAObject.replaceWithSuffixSum(arr6);
-		System.out.println(Arrays.toString(result4));
+		//System.out.println(Arrays.toString(result4));
+		
+		//7. a = [4, 0, 1, -2, 3] -> b = [4, 5, -1, 2, 1]
+		int[] a = {4, 0, 1, -2, 3}; //a, b and n are used as in question
+		int n = 5;
+		int[] b = aAObject.mutateArray(n, a); 
+		//System.out.println(Arrays.toString(b));
+		
+		//8. Example: a = [1, -3, 5], b = [2, 4, -6] -> Result string: "1245"
+		int[] a2 = {1, -3, 5};
+		int[] b2 = {2, 4, -6};
+		String result5 = aAObject.buildString(a2, b2);
+		System.out.println(result5);
 		
 	}
 }

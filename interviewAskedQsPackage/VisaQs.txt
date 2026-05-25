@@ -1,0 +1,36 @@
+Problem Title: 
+Visa Merchant Discount Calculator:
+A Visa merchant is processing a sequence of transactions. 
+For a given list of prices, the final Selling Price of an item at index i is 
+calculated as the original price minus a discount. The discount for an item 
+at index i is defined as the minimum price observed among all items appearing 
+before it in the sequence (i.e., indices 0 to i-1).
+The first item (index 0) never receives a discount because there are no 
+preceding prices.The discount can never exceed the original 
+price (the price cannot be negative).
+
+Task: Given an integer array nums representing prices, return the Total 
+Selling Price (the sum of all discounted prices).
+Constraints 1: nums.length <= 10^5  and nums[i] <= 10^4 
+The total sum may exceed the range of a 32-bit integer; use a 64-bit integer 
+(long) for the result.
+
+Example 1 Input: nums = [10, 5, 8, 2, 6] 
+Walkthrough:
+	Index 0: Price = 10. Discount = 0 (No preceding). Sold = 10. 
+	Index 1: Price = 5. Discount = min(10) = 10. Note: If discount > price, 
+	the item is free. Sold = 0.
+	Index 2: Price = 8. Discount = min(10, 5) = 5. Sold = 3.
+	Index 3: Price = 2. Discount = min(10, 5, 8) = 5. Sold = 0.
+	Index 4: Price = 6. Discount = min(10, 5, 8, 2) = 2. Sold = 4.
+	Output: 17 (10 + 0 + 3 + 0 + 4)
+
+Example 2 Input: nums = [3, 3, 3]
+Walkthrough:
+	Index 0: Price 3, Discount 0. Sold = 3.
+	Index 1: Price 3, Discount 3. Sold = 0.Index 2: Price 3, Discount 3. 
+	Sold = 0.
+	Output: 3 
+Recommended Solution Approach (Java)To solve this in O(n) time, you should 
+maintain a runningMinimum variable as you iterate through the array, rather 
+than re-scanning the prefix for every element.
